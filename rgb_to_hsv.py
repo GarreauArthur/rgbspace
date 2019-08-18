@@ -1,4 +1,5 @@
 import numpy as np
+import colorsys
 from PIL import Image
 
 
@@ -29,17 +30,17 @@ def np_conv(x):
   color = np.zeros((shape[0],1))
   for i in range(shape[0]):
     h,s,v = rgb_to_hsv(x[i,0],x[i,1],x[i,2])
-    if h < 61: # red
+    if h < 31 or h > 329: # red
       color[i] = 0
-    elif h < 121: # yellow
+    elif 31 < h < 90: # yellow
       color[i] = 1
-    elif h < 181: # green
+    elif 89 < h < 150: # green
       color[i] = 2
-    elif h < 241: # cyan
+    elif 149< h < 210: # cyan
       color[i] = 3
-    elif h < 301: # blue
+    elif  209 < h < 270: # blue
       color[i] = 4
-    elif h < 361: # magenta
+    elif 269 < h < 330: # magenta
       color[i] = 5
   return color
 
